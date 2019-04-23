@@ -1,0 +1,26 @@
+# Position wrapper to move and rotate generated points on a plane
+# by  Tom Genard - 2019.03.20
+# 
+# 
+
+import sys
+import math
+from vector_2d import *
+from random_vector import *
+from rectangle import *
+from rectangle_perimeter_generator import *
+from kl_generator import *
+
+class translation_2d_wrapper_generator :
+    """Translation of a point on a plane"""
+    
+    def __init__(self, gen_, translation_) :
+        self.gen = gen_
+        self.translation = translation_
+        return
+
+    def __call__(self, ud01_) :
+        r = ud01_
+        
+        point = self.gen(r)
+        return point + self.translation

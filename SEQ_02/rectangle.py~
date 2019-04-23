@@ -1,0 +1,14 @@
+import sys
+import math
+from vector_2d import *
+
+class rectangle :
+
+    def __init__(self, a_, b_) :
+        test_value_positive(a_)
+        test_value_positive(b_)
+        
+        self.a = a_
+        self.b = b_
+        
+        self

@@ -1,0 +1,7 @@
+# PRNG - Inverse Tranform Method
+# by  Tom Genard - 2019.02.07
+# 
+# Please don't break it, it's very precious
+
+import sys
+

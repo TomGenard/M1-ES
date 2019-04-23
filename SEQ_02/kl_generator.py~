@@ -1,0 +1,46 @@
+#!/usr/bin/env python3
+
+import sys
+
+# Knuth & Lewis generator
+class kl_generator :
+    """Knuth & Lewis uniform deviated random real number generator in [0,1)"""
+    # Parameters of the congruence:
+    a = 1664525
+    c = 1013904223
+    M = 2**32
+
+    def __init__(self, seed_) :
+        """Constructor"""
+        # Internal state as a tuple:
+        self._state_ = (seed_,)
+        return
+
+    def get_state(self) :
+        return self.state_
+
+    def set_state(self, state_) :
+        self._state_ = state_
+        return
+    
+    def shoot(self) :
+        """Randomize a real number uniformly distributed in [0,1)"""
+        u = (self.a * self._state_[0] + self.c) % self.M
+        self._state_ = (u,) # Mise à jour de l'état du générateur
+        return u * 1.0 / self.M
+       
+    def __call__(self) :
+        return self.shoot()
+    
+# Test function:
+if __name__ == "__main__" :
+    seed = 314159
+    sys.stderr.write("Seed : {}\n".format(seed))
+    kl_gen = kl_generator(seed);
+    nshoots = 10
+    for i in range(nshoots) :
+        r = kl_gen() # On note l'utilisation de l'opérateur '()'.
+                     # Cela est rendu possible car on a équipé la
+                     # classe d'une méthode '__call__' sans argument.
+        sys.stdout.write("{}\n".format(r))
+    sys.exit(0)

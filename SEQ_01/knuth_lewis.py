@@ -1,0 +1,73 @@
+# Linear Congruential Generator
+# by  Tom Genard - 2019.30.01
+# 
+# Please don't break it, it's very precious
+
+import sys
+
+## Setter and Getter for the seed
+
+def set_seed(input_value) :
+        seed = input_value
+
+def get_seed(output_value) :
+        return output_value
+
+## Test the values inserted
+
+def test_value(input_value) :
+        try :
+                input_value = float(input_value)
+        except :
+                sys.stderr.write("ERROR : Format incorrect\n")
+                sys.exit(1)
+
+        if (input_value < 0) :
+                sys.stderr.write("ERROR : Valeur négative\n")
+                sys.exit(1)
+
+## KNUTH AND LEWIS generator
+
+def knuth_lewis_generator(_input_seed,_a,_c,_m) :
+        return (_a * _input_seed + _c) % (_m)
+
+## MAIN BIT
+
+def main():
+        seed = 31431592653 # Initialisation of the seed of the generator
+        i = 0
+        output_number = seed
+        prng_file = open("prng_knuth_lewis.data","w")
+        prng_init_state = open("prng_knuth_lewis_init.txt","w")
+
+        a_ = input("Veuillez inserez la valeur du facteur : ") # K-L : 1664525
+        test_value(a_)
+        a_ = float(a_)
+
+        c_ = input("Veuillez inserez la valeur de l'excès : ") # K-L : 1013904223
+        test_value(c_)
+        c_ = float(c_)
+
+        m_ = input("Veuillez inserez la valeur du modulo : ")  # K-L : 2**32 or 4294967296
+        test_value(m_)
+        m_ = float(m_)
+        
+        prng_init_state.write("seed={:.0f}\n".format(seed))
+        prng_init_state.write("a={:.0f}\n".format(a_))
+        prng_init_state.write("c={:.0f}\n".format(c_))
+        prng_init_state.write("m={:.0f}\n".format(m_))
+        prng_init_state.close()
+
+        while (i < 100000) :
+                output_number = knuth_lewis_generator(output_number,a_,c_,m_)
+                output_number = int(output_number)
+                i = i + 1
+                prng_file.write("{:.0f}\n".format(output_number))
+        prng_file.close()
+
+#########################
+## MAIN PROGRAM
+#########################
+
+if __name__ == "__main__" :
+        main()

@@ -1,0 +1,34 @@
+# Two dimentional vector
+# by  Tom Genard - 2019.03.14
+# 
+# 
+
+import sys
+import math
+from vector_2d import *
+from test_functions_library import *
+
+def calculate_impact_point(x0_, z0_, v0_, alpha0_, g) :
+  
+    t_impact = ( v0 * math.sin(alpha0_) / g ) * ( 1 + math.sqrt( 1 + ( 2*g * z0 ) / ( v0 * math.sin(angle)**2 ) ) )
+    x_impact = v0 * cos( alpha0_ ) * t_impact
+    angle_impact = math.asin( ( g * t_impact ) / 2 * v0 ) - ( z0 / ( v0 * t_impact ) ) )
+    
+    vx_impact = v0 * math.cos( angle_impact )
+    vy_impact = -g * t_impact + v0 * math.sin( angle_impact )
+
+    v_impact = vector_2d(vx_impact,vy_impact)
+
+    return (x_impact, t_impact, angle_impact, v_impact)
+
+if __name__ == "__main__" :
+    g = 10
+    m = 0.12
+    x0 = 0
+    z0 = 1
+    v0 = 6
+    alpha0 = 35
+    alpha0 = ( alpha0 * math.pi )/180 # Convert in radians
+
+    print(calculate_impact_point(x0, z0, v0, alpha0, g))
+    

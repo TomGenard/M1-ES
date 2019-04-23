@@ -1,0 +1,34 @@
+# Uniform generator for the circle
+# by  Tom Genard - 2019.02.28
+# 
+# Random points for our good friend the disk
+
+import sys
+import math
+from vector_2d import *
+from test_functions_library import *
+from kl_generator import *
+from circle import *
+
+class circle_surface_generator :
+    def __init__(self, circle_) :
+        self.circle = circle_
+
+        return
+
+    def generate_point_on_circle_surface(self,ud01_) :
+        r = ud01_()
+        r = self.circle.get_radius() * math.sqrt(r)
+        
+        r_theta = ud01_()
+        r_theta = r_theta * 2 * math.pi
+
+        x_ = r * math.cos(r_theta)
+        y_ = r * math.sin(r_theta)
+        
+        return ( vector_2d(x_,y_) )
+
+    def __call__(self, ud01_) :
+        r_vector = self.generate_point_on_circle_surface(ud01_)
+
+        return r_vector

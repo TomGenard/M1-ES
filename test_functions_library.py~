@@ -1,0 +1,29 @@
+# PRNG - Inverse Tranform Method
+# by  Tom Genard - 2019.02.07
+# 
+# Doubt everything, except those testing functions. They are legit
+
+import sys
+import random
+
+def test_value_positive_and_integer(value_to_test) :
+    try :
+        input_value = float(input_value)
+    except :
+        sys.stderr.write("ERROR : Format incorrect\n")
+        sys.exit(1)
+
+    if (input_value < 0) :
+        sys.stderr.write("ERROR : Valeur négative\n")
+        sys.exit(1)
+
+def test_value_integer(value_to_test) :
+    try :
+        input_value = float(input_value)
+    except :
+        sys.stderr.write("ERROR : Format incorrect\n")
+        sys.exit(1)
+
+    if (input_value < 0) :
+        sys.stderr.write("ERROR : Valeur négative\n")
+        sys.exit(1)

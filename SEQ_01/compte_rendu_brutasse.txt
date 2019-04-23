@@ -1,0 +1,75 @@
+ATELIER I
+	Exercice 1
+		1) Nous écrivons un programme permettant de générer, et afficher, 100000 nombres aléatoires selon l'algorithme de génération de Knuth et Lewis, avec l'amorce 3141592653.
+		2) Nous construisons un histogramme des valeurs générés grâce à GSL, et nous affichons les résultats en utilisant une macro Gnuplot.
+		3) Nous remarquons que pour chaque bin, nous avons un nombre moyen de 1000 coups et que la distribution est uniforme. C'est le comportement attendu pour cette méthode de génération de nombre aléatoire, sachant que nous avons 100 bins.
+	Exercice 2 (?)
+		1)
+		2)
+		3)
+
+ATELIER II
+	Exercice 1
+		1) 
+		2) 
+		3)
+		4)
+		5)
+		6)
+
+ATELIER III
+	Exercice 1
+		1) Le programme "prng0.py" génère un nombre spécifié de valeurs (supérieur ou égal à 1000), en prenant comme amorce une valeur elle aussi spécifiée lors du lancement du programme. Contrairement au programme écrit à l'Atelier I, ce programme utilise la librairie "random" pour générer ces nombres.
+		Les nombres générés sont envoyé en sortie directement vers le terminal.
+		2) Un fichier de sauvegarde "prng_seed.log" est bel et bien créé, et contient la seed.
+		3) Les nombre générés sont compris entre 0 et 1, selon une distribution semblant uniforme, ce qui est le comportement attendu.
+		4) SI l'on choicit une amorce différente, nous obtenons des résultats en sortie différents. C'est de nouveau le comportement attendu.
+	Exercice 2
+		1) -
+		2) Le programme génère bien deux fichiers :
+		- "prng_seed.log" : Sauvegarde de la seed
+		- "prng_state.log" :  Sauvegarde de l'état interne du générateur
+		3) L'état interne du générateur se révèle etre un tuple contenant 3 cases de données :
+		- state[0] : 3
+		- state[1] : Un tuple contenant des nombres utilisés lors de la génération aléatoire
+		- state[2] : None
+	Exercice 3
+		1) -
+		2) -
+		3)
+	Exercice 4
+		1)
+
+ATELIER IV
+	Exercice 1
+		1) -
+		2) Modifier la valeur de RANDOM modifie les 10 valeurs en sortie
+	Exercice 2
+		1) Nous remarquons que le script génère des suites différentes de nombres aléatoire, à la condition que nous ne générons ces nobmres qu'une fois par seconde, sans quoi la série sera la même.
+		2) Utiliser la date comme seed de lancement pour 100 calculs que l'on veut indépendant est risqué, en effet il est possible qu'une partie, si ce n'est l'entièreté, des machines vont avoir comme seed de base la même date, générant ainsi toujours les mêmes nombres à travers la ferme de calcul. On ne peut donc plus guarentir la fiabilité de ce cacul Monte-Carlo, car les cnombre générés ne sont plus indépendants.
+	Exercice 3
+		1) -
+		2)
+	Exercice 4
+		1) -
+		2) Ce programme utilise la commande "srand48()" et "drand48()" de la bibliothèque standard du C pour générer 1000 nombres aléatoires
+	Exercice 5
+		1) -
+		2) Comme précédement, ce programme génère des nombres aléatoires en utilisant "srand48()" et "drand48()". Cette fois si, le programme demande d'initialiser manuellement le seed et le nombre de valeurs à générer (et renvoie des messages d'erreurs si le format des valeurs entrées est incorrect).
+	Exercice 6
+		1) -
+		2)
+
+ATELIER V
+	Exercice 1
+		1)
+	Exercice 2
+		1)
+	Exercice 3
+		1)
+		2)
+		3)
+		4)
+	Exercice 4
+		1)
+		2)

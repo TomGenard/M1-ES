@@ -1,0 +1,84 @@
+#!/usr/bin/env python3
+
+import sys
+
+from vector_1d import *
+
+class segment_1d :
+    """One dimensional segment (interval)"""
+
+    def __init__(self, first_, last_) :
+        self.first = first_
+        self.last = last_
+        return
+
+    def __repr__(self) :
+        return "({};{})".format(self.first, self.last)
+
+    def __str__(self) :
+        return '({};{})'.format(self.first, self.last)
+
+    def get_first(self) :
+        return self.first
+
+    def get_last(self) :
+        return self.last
+
+    def get_length(self) :
+        return (self.last - self.first).mag()
+    
+    def inside(self, point_) :
+        if (point_.get_coordinate() < self.first.get_coordinate()) :
+            return False
+        if (point_.get_coordinate() > self.last.get_coordinate()) :
+            return False
+        return True
+
+    def locate(self, point_, resolution_ = 1e-7) :
+        res = abs(resolution_)
+        if (point_.get_coordinate() < self.first.get_coordinate() - res ) :
+            return -1
+        if (point_.get_coordinate() < self.first.get_coordinate() + res ) :
+            return 0
+        if (point_.get_coordinate() < self.last.get_coordinate() - res ) :
+            return 1
+        if (point_.get_coordinate() < self.last.get_coordinate() + res ) :
+            return 0
+        return -1
+     
+    
+# Test program:
+if __name__ == "__main__" :
+
+    A = vector_1d(3.0)
+    B = vector_1d(5.0)
+    sys.stdout.write("A = {}\n".format(A))
+    sys.stdout.write("B = {}\n".format(B))
+
+    AB = segment_1d(A, B)
+    sys.stdout.write("AB = {}\n".format(AB))
+    sys.stdout.write("|AB| = {}\n".format(AB.get_length()))
+    
+    C = vector_1d(3.5)
+    if AB.inside(C) :
+        sys.stdout.write("C is inside AB\n")
+    
+    D = vector_1d(1000.0)
+    if not AB.inside(D) :
+        sys.stdout.write("D is outside AB\n")
+
+    start = vector_1d(-1.0)
+    stop  = vector_1d(+8.0)
+    nsteps = 100
+    step = (stop - start) / nsteps
+    epsilon = 0.05
+    for i in range(nsteps) :
+        running = start + i * step
+        location = AB.locate(running, epsilon)
+        print("running={} : location={}".format(running, location))
+
+    sys.exit(0)
+
+  
+    
+    

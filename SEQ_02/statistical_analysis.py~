@@ -1,0 +1,32 @@
+import sys
+import csv
+
+class stat_anlysis :
+
+    def __init__(self, data_file_) :
+        data_file = data_file_
+
+        return
+
+    def csv_to_array(self) :
+        x = csv.reader(data_file)
+        list(x)
+
+        return
+        
+
+    def get_mean(self, column_id_) :
+        fname = self.data_file
+        
+        num_lines = 0
+        with open(fname, 'r') as f:
+            for line in f:
+                num_lines += 1
+        print("Number of lines:")
+        print(num_lines)
+
+if __name__ == "__main__" :
+    data_file = "random_segments_data.csv"
+
+    stat = stat_analysis(data_file)
+    stat.csv_to_array

@@ -1,0 +1,9 @@
+# PRNG - Inverse Tranform Method
+# by  Tom Genard - 2019.02.28
+# 
+# Living on the surface of a rectangular planet
+
+import sys
+import math
+from vector_2d import *
+from test_functions_library import *

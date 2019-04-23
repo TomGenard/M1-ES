@@ -1,0 +1,50 @@
+# Random point generator on a 2d plane
+# by  Tom Genard - 2019.02.20
+# 
+# It ain't much but it's honest work.
+
+import sys
+import math
+from vector_2d import *
+from collision_detection_2d import *
+from test_functions_library import *
+
+def generate_random_point_on_plane(x_min_,x_max_,y_min_,y_max_) :
+    test_value_max_above_min(x_max_, x_min_)
+    test_value_max_above_min(y_max_, y_min_)
+    
+    x = random.random()
+    x = x * (x_max_ - x_min_) + x_min_
+
+    y = random.random()
+    y = y * (y_max_ - y_min_) + y_min_
+
+    return vector_2d(x,y)
+
+def generate_random_point_on_line(OA_,OB_) :
+    r = random.random()
+    
+    x = r * (OB_.x-OA_.x) + OA_.x
+    y = r * (OB_.y-OA_.y) + OA_.y
+    
+    return vector_2d(x,y)
+
+if __name__ == "__main__" :
+    xmin = 0
+    xmax = 10
+    ymin = 0
+    ymax = 10
+    
+    OA = generate_random_point_on_plane(xmin,xmax,ymin,ymax)
+    OB = generate_random_point_on_plane(xmin,xmax,ymin,ymax)
+
+    OM = generate_random_point_on_line(OA,OB)
+    sys.stdout.write("OA = {}\n".format(OA))
+    sys.stdout.write("OB = {}\n".format(OB))
+    sys.stdout.write("OM = {}\n".format(OM))
+
+    sys.stdout.write("Collision? = {}\n".format(collision_detection_on_segment(OM,OA,OB)))
+    error = 0.1
+    error_mag = 0.1
+    sys.stdout.write("Almost collision? = {}\n".format(collision_detection_on_segment_w_error(OM,OA,OB,error,error_mag)))
+    

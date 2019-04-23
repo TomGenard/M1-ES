@@ -1,0 +1,45 @@
+\documentclass{article}
+
+\title{Rapport de Traveaux Pratiques\\
+  Exp\'{e}riances et Simulations\\
+  S\'{e}quance 1}
+
+\author{G\'{E}NARD Tom \\
+  Master de Physique, niveau M1\\
+  Universit\'{e} de Caen Normandie\\
+  Contact: \url{mailto:21502237@etu.unicaen.fr}}
+  
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\vfill
+\pagebreak
+
+\tableofcontents
+\vfill
+\pagebreak
+
+\section{Introduction}\label{section:intro}
+Dans cette premi\`{e}re s\'{e}quance, nous allons tout d'abord nous intéresser à des générateurs simples de nombre aléatoire, et nous allons nous re-familiariser avec Python3.
+
+\section{Atelier 1}\label{section:atelier1}
+Nous commençons tout d'abord par créer le générateur de nombres aléatoire que nous allons principalement utiliser. Ce générateur est un générateur pseudo-aléatoire basé sur un algorithme dit de congruance linéaire, et plus particulièrement celui de Knuth et Lewis.\\
+\newline
+L'algorithme de Knuth et Lewis permet de générer des valeurs semblant aléatoire à l'aide de la formule congruance linéaire suivante :
+\begin{equation}
+  r_{n+1} = ( r_{n} * a + c ) \; mod \; 2^{m} \label{eq:ann:1}
+\end{equation}
+avec pour l'algorithme de Knuth et Lewis :
+\begin{equation}
+  a = 1664525
+\end{equation}
+\begin{equation}
+  c = 1013904223
+\end{equation}
+\begin{equation}
+  m = 32
+\end{equation}
+
+\end{document}
